@@ -122,17 +122,21 @@ class _NewDiaryPageState extends State<NewDiaryPage> {
             horizontal: SizeConfig.safeBlockHorizontal * 3.06,
             vertical: SizeConfig.safeBlockHorizontal * 4.5,
           ),
-          child: Row(
-            children: <Widget>[
-              Icon(Icons.location_on_sharp,
-                  color: constants.pallet2,
-                  size: SizeConfig.safeBlockHorizontal * 6.3),
-              SizedBox(width: SizeConfig.safeBlockHorizontal * 1.08),
-              Text(
-                constants.wordTapNS,
-                style: textStyle3(context),
-              ),
-            ],
+          child: SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              children: <Widget>[
+                Icon(Icons.location_on_sharp,
+                    color: constants.pallet2,
+                    size: SizeConfig.safeBlockHorizontal * 6.3),
+                SizedBox(width: SizeConfig.safeBlockHorizontal * 1.08),
+                Text(
+                  constants.wordTapNS,
+                  style: textStyle3(context),
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -144,19 +148,23 @@ class _NewDiaryPageState extends State<NewDiaryPage> {
             padding: EdgeInsets.symmetric(
                 horizontal: SizeConfig.safeBlockHorizontal * 1.08,
                 vertical: SizeConfig.safeBlockHorizontal * 2.7),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  constants.wordAddSiteDiary,
-                  style: textBold6(context),
-                ),
-                const Icon(
-                  Icons.help,
-                  color: constants.pallet3,
-                  size: 30.6,
-                ),
-              ],
+            child: SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                alignment: WrapAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    constants.wordAddSiteDiary,
+                    style: textBold6(context),
+                  ),
+                  const Icon(
+                    Icons.help,
+                    color: constants.pallet3,
+                    size: 30.6,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -239,24 +247,24 @@ class _NewDiaryPageState extends State<NewDiaryPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text(
-                        constants.wordIncludePhotoGallery,
-                        style: textColored3(
-                            context, constants.pallet3, FontWeight.normal),
-                      ),
-                      Transform.scale(
-                        scale: 1.2,
-                        child: Checkbox(
-                          value: _isChecked,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              _isChecked = value!;
-                            });
-                          },
-                          checkColor: constants.pallet6,
-                          activeColor: constants.pallet4,
-                        ),
-                      ),
+                      // Text(
+                      //   constants.wordIncludePhotoGallery,
+                      //   style: textColored3(
+                      //       context, constants.pallet3, FontWeight.normal),
+                      // ),
+                      // Transform.scale(
+                      //   scale: 1.2,
+                      //   child: Checkbox(
+                      //     value: _isChecked,
+                      //     onChanged: (bool? value) {
+                      //       setState(() {
+                      //         _isChecked = value!;
+                      //       });
+                      //     },
+                      //     checkColor: constants.pallet6,
+                      //     activeColor: constants.pallet4,
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],
@@ -319,7 +327,7 @@ class _NewDiaryPageState extends State<NewDiaryPage> {
                         context, constants.pallet3, FontWeight.normal),
                   ),
                   CustomTextFormField(
-                    key: const Key('tagsFeild'),
+                    key: const Key('tagsField'),
                     controller: _tagsController,
                     label: constants.empty,
                   ),
@@ -345,23 +353,23 @@ class _NewDiaryPageState extends State<NewDiaryPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text(
-                        constants.wordLinkToEvent,
-                        style: textBold4(context),
-                      ),
-                      Transform.scale(
-                        scale: 1.2,
-                        child: Checkbox(
-                          value: _isChecked,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              _isChecked = value!;
-                            });
-                          },
-                          checkColor: constants.pallet6,
-                          activeColor: constants.pallet4,
-                        ),
-                      ),
+                      // Text(
+                      //   constants.wordLinkToEvent,
+                      //   style: textBold4(context),
+                      // ),
+                      // Transform.scale(
+                      //   scale: 1.2,
+                      //   child: Checkbox(
+                      //     value: _isChecked,
+                      //     onChanged: (bool? value) {
+                      //       setState(() {
+                      //         _isChecked = value!;
+                      //       });
+                      //     },
+                      //     checkColor: constants.pallet6,
+                      //     activeColor: constants.pallet4,
+                      //   ),
+                      // ),
                     ],
                   ),
                   const Divider(color: constants.pallet5, thickness: 3),
@@ -407,7 +415,7 @@ class _NewDiaryPageState extends State<NewDiaryPage> {
               });
               BlocProvider.of<UploadImagesCubit>(context).uploadImagesData(
                 context: context,
-                entity: UploadPhotoModel(
+                model: UploadPhotoModel(
                   name: _commentController.text,
                   job: _tagsController.text,
                   images: imageList,
