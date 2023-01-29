@@ -181,61 +181,54 @@ class _NewDiaryPageState extends State<NewDiaryPage> {
                 children: <Widget>[
                   _buildTextDivider(constants.wordAddPhotoSite),
                   images.isNotEmpty
-                      ? SizedBox(
-                          child: SizedBox(
-                            width: double.infinity,
-                            height: SizeConfig.safeBlockHorizontal * 27,
-                            child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: images.length,
-                              itemBuilder: (_, index) {
-                                final data = images[index];
-                                return Stack(
-                                  children: <Widget>[
-                                    SizedBox(
-                                      width:
-                                          SizeConfig.safeBlockHorizontal * 20.7,
-                                      height:
-                                          SizeConfig.safeBlockHorizontal * 20.7,
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            right:
-                                                SizeConfig.safeBlockHorizontal *
-                                                    4.05,
-                                            top:
-                                                SizeConfig.safeBlockHorizontal *
-                                                    4.05),
-                                        child: ClipRRect(
-                                          clipBehavior: Clip.antiAlias,
-                                          child: Image.file(
-                                            data,
-                                            fit: BoxFit.cover,
-                                          ),
+                    ? SizedBox(
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: SizeConfig.safeBlockHorizontal * 27,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: images.length,
+                            itemBuilder: (_, index) {
+                              final data = images[index];
+                              return Stack(
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: SizeConfig.safeBlockHorizontal * 20.7,
+                                    height: SizeConfig.safeBlockHorizontal * 20.7,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        right: SizeConfig.safeBlockHorizontal * 4.05,
+                                        top: SizeConfig.safeBlockHorizontal * 4.05),
+                                      child: ClipRRect(
+                                        clipBehavior: Clip.antiAlias,
+                                        child: Image.file(
+                                          data,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
-                                    Positioned(
-                                      left: SizeConfig.safeBlockHorizontal * 13,
-                                      child: GestureDetector(
-                                        child: Icon(Icons.cancel_rounded,
-                                            color: Colors.black,
-                                            size:
-                                                SizeConfig.safeBlockHorizontal *
-                                                    7.02),
-                                        onTap: () {
-                                          setState(() {
-                                            images.removeAt(index);
-                                          });
-                                        },
-                                      ),
-                                    )
-                                  ],
-                                );
-                              },
-                            ),
+                                  ),
+                                  Positioned(
+                                    left: SizeConfig.safeBlockHorizontal * 13,
+                                    child: GestureDetector(
+                                      child: Icon(
+                                        Icons.cancel_rounded,
+                                        color: Colors.black,
+                                        size: SizeConfig.safeBlockHorizontal * 7.02),
+                                      onTap: () {
+                                        setState(() {
+                                          images.removeAt(index);
+                                        });
+                                      },
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
                           ),
-                        )
-                      : const SizedBox(),
+                        ),
+                      )
+                    : const SizedBox(),
                   CustomButton(
                     onPress: () {
                       requestPhotoPermission(context);
