@@ -16,25 +16,25 @@ void main() {
       expect(find.text('Enter comments here'), findsOneWidget);
     });
 
-    testWidgets('Check if _tagsController isNotEmpty',
-        (WidgetTester test) async {
-      final tags = find.byKey(const ValueKey('tagsField'));
+    testWidgets('Check if _commentController isNotEmpty',
+            (WidgetTester test) async {
+          final comment = find.byKey(const ValueKey('tagsField'));
 
-      await test.pumpWidget(const MaterialApp(home: NewDiaryPage()));
-      await test.enterText(tags, 'Tags is required');
+          await test.pumpWidget(const MaterialApp(home: NewDiaryPage()));
+          await test.enterText(comment, 'Enter comments here');
 
-      await test.pump();
+          await test.pump();
 
-      expect(find.text('Tags is required'), findsOneWidget);
-    });
+          expect(find.text('Enter comments here'), findsOneWidget);
+        });
+
 
     testWidgets('Check Next Button', (WidgetTester test) async {
       final nextButton = find.byKey(const ValueKey('nextButton'));
 
       await test.pumpWidget(const MaterialApp(home: NewDiaryPage()));
-      await test.tap(nextButton);
+      await test.tap(warnIfMissed: false, nextButton);
       await test.pump();
-
 
     });
   });

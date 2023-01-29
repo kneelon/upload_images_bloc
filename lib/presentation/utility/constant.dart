@@ -15,6 +15,9 @@ const String job = 'job';
 const String images = 'images';
 const String id = 'id';
 const String createdAt = 'createdAt';
+const String nextButton = 'nextButton';
+const String commentField = 'commentField';
+const String tagsField = 'tagsField';
 
 const String capComments = 'Comments';
 const String capDetails = 'Details';

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:xam/data/model/upload_photo_model.dart';
+import 'package:xam/domain/entity/upload_photo_entity.dart';
 import 'package:xam/presentation/ui/new_diary_page.dart';
 import 'package:xam/presentation/utility/constant.dart' as constants;
 // ignore: depend_on_referenced_packages
@@ -19,11 +20,11 @@ class UploadImagesCubit extends Cubit<UploadImagesState> {
   }) : super(UploadImagesInitial());
 
   Future<void> uploadImagesData(
-      {required context, required UploadPhotoModel entity}) async {
+      {required context, required UploadPhotoModel model}) async {
     emit(UploadImagesLoading());
 
     try {
-      final response = await uploadImagesUseCase.call(entity);
+      final response = await uploadImagesUseCase.call(model);
       debugPrint(
           '${constants.capSuccess} $response'); //<-- print SUCCESS response
       Navigator.push(context,
